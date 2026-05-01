@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gîte Daumesnil · Guide d'accueil</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink:   '#2C3E4C',
+            muted: '#7A7067',
+            linen: { DEFAULT: '#E8E3DC', light: '#F5F1EB', dark: '#D4CEC6' },
+            parch: '#FDFCF9',
+            alert: { bg: '#FAF5F5', border: '#E8D0D0', text: '#7A2A35' },
+          },
+          fontFamily: {
+            sans:  ['"Questrial"', 'system-ui', 'sans-serif'],
+            serif: ['"DM Serif Display"', 'Georgia', 'serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Questrial&display=swap" rel="stylesheet" />
+  <style>
+    html { scroll-behavior: smooth; }
+
+    .t { display: none; }
+
+    .lang-fr .t-fr { display: revert; }
+    .lang-en .t-en { display: revert; }
+
+    .lang-fr span.t-fr,
+    .lang-fr a.t-fr  { display: inline; }
+    .lang-en span.t-en,
+    .lang-en a.t-en  { display: inline; }
+
+    h1, h2, h3 { font-family: 'Cormorant Garamond', Georgia, serif; }
+  </style>
+</head>
+
+<body class="lang-fr bg-parch text-ink font-sans antialiased">
+
+  <!-- ─── HEADER ─────────────────────────────────────────────── -->
+  <header class="sticky top-0 z-50 bg-parch/95 backdrop-blur border-b border-linen">
+    <div class="max-w-3xl mx-auto px-5 py-3 flex items-center justify-between gap-4">
+      <div>
+        <p class="font-serif text-xl font-medium text-ink leading-tight tracking-wide">Gîte Daumesnil</p>
+        <p class="text-sm text-muted tracking-widest uppercase mt-0.5">
+          <span class="t t-fr">Guide d'accueil</span>
+          <span class="t t-en">Welcome guide</span>
+        </p>
+      </div>
+
+      <button
+        onclick="toggleLang()"
+        class="text-sm font-medium tracking-wide px-3 py-1.5 border border-linen text-muted hover:border-ink hover:text-ink transition-colors"
+      >
+        <span class="t t-fr">EN</span>
+        <span class="t t-en">FR</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ─── NAV ──────────────────────────────────────────────────── -->
+  <nav id="main-nav" class="sticky z-40 bg-parch border-b border-linen">
+
+    <!-- Desktop -->
+    <div class="hidden sm:block max-w-3xl mx-auto px-5">
+      <ul class="flex gap-7 text-sm tracking-widest uppercase whitespace-nowrap py-3">
+        <li><a href="#local" class="text-muted hover:text-ink py-1 border-b border-transparent hover:border-ink transition-colors">
+          <span class="t t-fr">Produits locaux</span><span class="t t-en">Local products</span>
+        </a></li>
+        <li><a href="#markets" class="text-muted hover:text-ink py-1 border-b border-transparent hover:border-ink transition-colors">
+          <span class="t t-fr">Marchés</span><span class="t t-en">Markets</span>
+        </a></li>
+        <li><a href="#grocery" class="text-muted hover:text-ink py-1 border-b border-transparent hover:border-ink transition-colors">
+          <span class="t t-fr">Courses</span><span class="t t-en">Grocery</span>
+        </a></li>
+        <li><a href="#medical" class="text-muted hover:text-ink py-1 border-b border-transparent hover:border-ink transition-colors">
+          <span class="t t-fr">Urgences</span><span class="t t-en">Emergencies</span>
+        </a></li>
+        <li><a href="#checkout" class="text-muted hover:text-ink py-1 border-b border-transparent hover:border-ink transition-colors">
+          <span class="t t-fr">Départ</span><span class="t t-en">Checkout</span>
+        </a></li>
+      </ul>
+    </div>
+
+    <!-- Mobile -->
+    <div class="sm:hidden">
+      <button
+        id="menu-toggle"
+        onclick="toggleMenu()"
+        class="w-full flex items-center justify-between px-5 py-3 text-sm tracking-widest uppercase text-muted hover:text-ink transition-colors"
+      >
+        <span class="flex items-center gap-2">
+          <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+          <span class="t t-fr">Menu</span><span class="t t-en">Menu</span>
+        </span>
+        <svg id="menu-chevron" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+
+      <div id="mobile-menu" class="hidden border-t border-linen">
+        <ul>
+          <li><a href="#local" onclick="closeMenu()" class="flex items-center gap-3 px-5 py-3.5 text-sm text-muted hover:bg-linen-light hover:text-ink transition-colors">
+            <span class="t t-fr">Produits locaux</span><span class="t t-en">Local products</span>
+          </a></li>
+          <li><a href="#markets" onclick="closeMenu()" class="flex items-center gap-3 px-5 py-3.5 text-sm text-muted hover:bg-linen-light hover:text-ink transition-colors">
+            <span class="t t-fr">Marchés</span><span class="t t-en">Markets</span>
+          </a></li>
+          <li><a href="#grocery" onclick="closeMenu()" class="flex items-center gap-3 px-5 py-3.5 text-sm text-muted hover:bg-linen-light hover:text-ink transition-colors">
+            <span class="t t-fr">Courses</span><span class="t t-en">Grocery</span>
+          </a></li>
+          <li><a href="#medical" onclick="closeMenu()" class="flex items-center gap-3 px-5 py-3.5 text-sm text-muted hover:bg-linen-light hover:text-ink transition-colors">
+            <span class="t t-fr">Urgences médicales</span><span class="t t-en">Medical emergencies</span>
+          </a></li>
+          <li><a href="#checkout" onclick="closeMenu()" class="flex items-center gap-3 px-5 py-3.5 text-sm text-muted hover:bg-linen-light hover:text-ink transition-colors">
+            <span class="t t-fr">Instructions de départ</span><span class="t t-en">Checkout instructions</span>
+          </a></li>
+        </ul>
+      </div>
+    </div>
+
+  </nav>
+
+  <!-- ─── HERO ──────────────────────────────────────────────── -->
+  <div class="w-full overflow-hidden" style="max-height: 480px;">
+    <img
+      src="images/hero.jpg"
+      alt="Gîte Daumesnil"
+      class="w-full object-cover object-center"
+      style="max-height: 480px;"
+    />
+  </div>
+
+  <main class="max-w-3xl mx-auto px-5 py-14 space-y-14">
+
+    <!-- ─── WELCOME ────────────────────────────────────────────── -->
+    <section id="welcome" class="text-center space-y-8">
+      <h1 class="font-serif text-5xl md:text-6xl font-normal text-ink tracking-wide">
+        <span class="t t-fr">Bienvenue</span>
+        <span class="t t-en">Welcome</span>
+      </h1>
+
+      <div class="t t-fr text-[#4A4039] leading-loose max-w-xl mx-auto space-y-4 text-[15px]">
+        <p>Nous sommes heureux de vous accueillir dans notre <strong class="font-medium text-ink">Gîte au Cœur des Champs</strong>. Vous trouverez dans ce guide quelques informations utiles à votre séjour, ainsi que des instructions de départ.</p>
+        <p>Nous vous souhaitons un agréable séjour et une belle découverte de notre région.</p>
+        <p class="font-serif italic text-xl text-muted pt-1">Noémie & Teddy</p>
+      </div>
+
+      <div class="t t-en text-[#4A4039] leading-loose max-w-xl mx-auto space-y-4 text-[15px]">
+        <p>We are delighted to welcome you to our <strong class="font-medium text-ink">Gîte au Cœur des Champs</strong>. In this guide, you will find some useful information for your stay, as well as check-out instructions.</p>
+        <p>We wish you a pleasant stay and a wonderful discovery of our region.</p>
+        <p class="font-serif italic text-xl text-muted pt-1">Noémie & Teddy</p>
+      </div>
+
+      <a href="tel:+33669939633" class="inline-flex items-center gap-4 bg-white border border-linen px-7 py-4 hover:border-ink transition-colors group">
+        <span class="text-xl">💬</span>
+        <div class="text-left">
+          <p class="text-[14px] text-muted uppercase tracking-widest mb-1">
+            <span class="t t-fr">Téléphone · WhatsApp</span>
+            <span class="t t-en">Phone · WhatsApp</span>
+          </p>
+          <p class="font-medium text-ink text-sm tracking-wide">+33 6 69 93 96 33</p>
+        </div>
+      </a>
+    </section>
+
+    <hr class="border-linen" />
+
+    <!-- ─── LOCAL PRODUCTS ─────────────────────────────────────── -->
+    <section id="local" class="space-y-7">
+      <h2 class="font-serif text-4xl font-normal text-ink tracking-wide">
+        <span class="t t-fr">Consommation locale</span>
+        <span class="t t-en">Local Products</span>
+      </h2>
+
+      <!-- Sophie's veggies -->
+      <div class="bg-white border border-linen p-6 space-y-3">
+        <div class="flex items-start gap-4">
+          <span class="text-2xl mt-0.5">🥕</span>
+          <div>
+            <h3 class="font-serif text-2xl font-normal text-ink">Les Bons Légumes de Sophie</h3>
+            <p class="text-sm text-muted tracking-wide mt-0.5">Cintheaux, 14180</p>
+          </div>
+        </div>
+        <p class="t t-fr text-[15px] text-[#4A4039] leading-loose">
+          À 2 min à pieds en sortant de la cour, tournez à gauche. Légumes locaux et de saison de notre voisine maraîchère Sophie d'Hoine. Le distributeur est ouvert <strong class="font-medium text-ink">24h/24 et 7j/7</strong>. Voir tarifs sur place.
+        </p>
+        <p class="t t-en text-[15px] text-[#4A4039] leading-loose">
+          2 minutes on foot from the courtyard, turn left. Local and seasonal vegetables from our neighbor Sophie d'Hoine, a market gardener. The vending machine is open <strong class="font-medium text-ink">24/7</strong>. See prices on site.
+        </p>
+      </div>
+
+      <!-- Cider & Apple Juice -->
+      <div class="bg-white border border-linen p-6 space-y-5">
+        <div class="flex items-start gap-4">
+          <span class="text-2xl mt-0.5">🍎</span>
+          <div>
+            <h3 class="font-serif text-2xl font-normal text-ink">
+              <span class="t t-fr">Cidre & Jus de Pomme artisanaux</span>
+              <span class="t t-en">Artisanal Cider & Apple Juice</span>
+            </h3>
+            <p class="text-sm text-muted tracking-wide mt-0.5">Versainville, 14700</p>
+          </div>
+        </div>
+        <p class="t t-fr text-[15px] text-[#4A4039] leading-loose">
+          Nous mettons à votre disposition des bouteilles de Jus de Pomme et Cidre artisanaux. Les pommes sont récoltées et pressées localement par nos amis C. & B. dans leur ferme de Versainville, à 20 km d'ici.
+        </p>
+        <p class="t t-en text-[15px] text-[#4A4039] leading-loose">
+          We offer artisanal Apple Juice and Cider bottles for purchase. The apples are harvested and pressed locally by our friends C. & B. at their farm in Versainville, 20 km from here.
+        </p>
+
+        <!-- Price table -->
+        <div class="border border-linen overflow-hidden">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="bg-linen-light border-b border-linen">
+                <th class="px-5 py-3 text-left text-[14px] font-medium text-muted tracking-widest uppercase">
+                  <span class="t t-fr">Produit</span>
+                  <span class="t t-en">Product</span>
+                </th>
+                <th class="px-5 py-3 text-right text-[14px] font-medium text-muted tracking-widest uppercase w-28">Prix</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-linen">
+              <tr>
+                <td class="px-5 py-3.5 text-[#4A4039]">
+                  <span class="t t-fr">Jus de Pomme (1 L)</span>
+                  <span class="t t-en">Apple Juice (1 L)</span>
+                </td>
+                <td class="px-5 py-3.5 text-right font-medium text-ink">3 €</td>
+              </tr>
+              <tr class="bg-parch">
+                <td class="px-5 py-3.5 text-[#4A4039]">
+                  <span class="t t-fr">Cidre (75 cl)</span>
+                  <span class="t t-en">Cider (75 cl)</span>
+                </td>
+                <td class="px-5 py-3.5 text-right font-medium text-ink">2,20 €</td>
+              </tr>
+              <tr>
+                <td class="px-5 py-3.5">
+                  <div class="font-medium text-ink">Pommeau</div>
+                  <div class="t t-fr text-[15px] text-muted mt-1 leading-relaxed">Liqueur normande à base de jus de pomme et de Calvados, vieillie en fûts de chêne. Douce, fruitée, servie en apéritif.</div>
+                  <div class="t t-en text-[15px] text-muted mt-1 leading-relaxed">Norman liqueur made from apple juice and Calvados, aged in oak barrels. Sweet, fruity, served as an aperitif.</div>
+                </td>
+                <td class="px-5 py-3.5 text-right font-medium text-ink align-top">10 €</td>
+              </tr>
+              <tr class="bg-parch">
+                <td class="px-5 py-3.5 text-[#4A4039]">
+                  <span class="t t-fr">Vinaigre de cidre</span>
+                  <span class="t t-en">Cider vinegar</span>
+                </td>
+                <td class="px-5 py-3.5 text-right font-medium text-ink">4 €</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <hr class="border-linen" />
+
+    <!-- ─── MARKETS ─────────────────────────────────────────────── -->
+    <section id="markets" class="space-y-7">
+      <h2 class="font-serif text-4xl font-normal text-ink tracking-wide">
+        <span class="t t-fr">Marchés locaux</span>
+        <span class="t t-en">Local Markets</span>
+      </h2>
+
+      <p class="t t-fr text-[15px] text-[#4A4039] leading-loose">
+        Une excellente manière de découvrir la Normandie : ses producteurs, ses fromages, son cidre, ses produits de saison. Voici les marchés que nous recommandons autour du gîte.
+      </p>
+      <p class="t t-en text-[15px] text-[#4A4039] leading-loose">
+        A wonderful way to discover Normandy: meet local producers, taste cheeses and cider, find seasonal produce. Here are the markets we recommend around the gîte.
+      </p>
+
+      <div class="grid gap-3">
+
+        <!-- Saint-Sylvain · Mercredi -->
+        <div class="bg-white border border-linen p-6 space-y-3">
+          <div class="flex items-start gap-4">
+            <span class="text-2xl mt-0.5">🌻</span>
+            <div class="space-y-1">
+              <div class="flex items-baseline gap-3 flex-wrap">
+                <h3 class="font-serif text-2xl font-normal text-ink">Saint-Sylvain</h3>
+                <span class="text-[14px] tracking-widest text-muted uppercase">
+                  <span class="t t-fr">6 min</span>
+                  <span class="t t-en">6 min</span>
+                </span>
+              </div>
+              <p class="text-[14px] tracking-wide text-muted uppercase">
+                <span class="t t-fr">Mercredi · 8h – 13h · Toute l'année</span>
+                <span class="t t-en">Wednesday · 8am – 1pm · Year-round</span>
+              </p>
+              <p class="text-[15px] text-muted">Parc de la Vallée, Rue Saint-Martin des Bois, 14190 Saint-Sylvain</p>
+            </div>
+          </div>
+          <p class="t t-fr text-[15px] text-[#4A4039] leading-loose">
+            Tout petit marché de village (une dizaine d'exposants), parfait pour un panier rapide en milieu de semaine. Les horaires peuvent varier selon la météo et la saison.
+          </p>
+          <p class="t t-en text-[15px] text-[#4A4039] leading-loose">
+            A very small village market (around ten stalls), perfect for a quick midweek basket. Hours may vary with weather and season.
+          </p>
+        </div>
+
+        <!-- Bretteville-sur-Laize · Jeudi -->
+        <div class="bg-white border border-linen p-6 space-y-3">
+          <div class="flex items-start gap-4">
+            <span class="text-2xl mt-0.5">🧺</span>
+            <div class="space-y-1">
+              <div class="flex items-baseline gap-3 flex-wrap">
+                <h3 class="font-serif text-2xl font-normal text-ink">Bretteville-sur-Laize</h3>
+                <span class="text-[14px] tracking-widest text-muted uppercase">
+                  <span class="t t-fr">5 min</span>
+                  <span class="t t-en">5 min</span>
+                </span>
+              </div>
+              <p class="text-[14px] tracking-wide text-muted uppercase">
+                <span class="t t-fr">Jeudi · 7h30 – 13h</span>
+                <span class="t t-en">Thursday · 7:30am – 1pm</span>
+              </p>
+              <p class="text-[15px] text-muted">Place de la Mairie, 14680 Bretteville-sur-Laize</p>
+            </div>
+          </div>
+          <p class="t t-fr text-[15px] text-[#4A4039] leading-loose">
+            Petit marché de proximité avec maraîchers, fromages et produits artisanaux du Calvados.
+          </p>
+          <p class="t t-en text-[15px] text-[#4A4039] leading-loose">
+            A small neighborhood market with vegetables, cheeses and Calvados artisanal products.
+          </p>
+        </div>
+
+        <!-- Caen · Saint-Sauveur · Vendredi -->
+        <div class="bg-white border border-linen p-6 space-y-3">
+          <div class="flex items-start gap-4">
+            <span class="text-2xl mt-0.5">🐟</span>
+            <div class="space-y-1">
+              <div class="flex items-baseline gap-3 flex-wrap">
+                <h3 class="font-serif text-2xl font-normal text-ink">Caen · Place Saint-Sauveur</h3>
+                <span class="text-[14px] tracking-widest text-muted uppercase">
+                  <span class="t t-fr">20 min</span>
+                  <span class="t t-en">20 min</span>
+                </span>
+              </div>
+              <p class="text-[14px] tracking-wide text-muted uppercase">
+                <span class="t t-fr">Vendredi · 8h – 13h</span>
+                <span class="t t-en">Friday · 8am – 1pm</span>
+              </p>
+              <p class="text-[15px] text-muted">Place Saint-Sauveur, 14000 Caen</p>
+            </div>
+          </div>
+          <p class="t t-fr text-[15px] text-[#4A4039] leading-loose">
+            Le marché le plus emblématique de Caen, dans une belle place pavée du centre historique.
+          </p>
+          <p class="t t-en text-[15px] text-[#4A4039] leading-loose">
+            Caen's most iconic market, set on a beautiful cobblestone square in the historic center.
+          </p>
+        </div>
+
+        <!-- Falaise · Samedi -->
+        <div class="bg-white border border-linen p-6 space-y-3">
+          <div class="flex items-start gap-4">
+            <span class="text-2xl mt-0.5">🧀</span>
+            <div class="space-y-1">
+              <div class="flex items-baseline gap-3 flex-wrap">
+                <h3 class="font-serif text-2xl font-normal text-ink">Falaise</h3>
+                <span class="text-[14px] tracking-widest text-muted uppercase">
+                  <span class="t t-fr">15 min</span>
+                  <span class="t t-en">15 min</span>
+                </span>
+                <span class="text-[14px] tracking-widest text-muted uppercase">
+                  <span class="t t-fr">★ Notre préféré</span>
+                  <span class="t t-en">★ Our favorite</span>
+                </span>
+              </div>
+              <p class="text-[14px] tracking-wide text-muted uppercase">
+                <span class="t t-fr">Samedi · 8h – 13h</span>
+                <span class="t t-en">Saturday · 8am – 1pm</span>
+              </p>
+              <p class="text-[15px] text-muted">
+                <span class="t t-fr">Sous et autour de la Halle, centre-ville</span>
+                <span class="t t-en">Under and around the covered market, town center</span>
+              </p>
+            </div>
+          </div>
+          <p class="t t-fr text-[15px] text-[#4A4039] leading-loose">
+            Le grand marché du samedi : près de 80 commerçants, légumes de saison, fruits, miel, confitures, fromages normands, poisson, fleurs… À combiner avec une visite du Château Guillaume-le-Conquérant.
+          </p>
+          <p class="t t-en text-[15px] text-[#4A4039] leading-loose">
+            The big Saturday market: around 80 vendors with seasonal vegetables, fruit, honey, jams, Norman cheeses, fish and flowers. Combine it with a visit to William the Conqueror's Castle.
+          </p>
+        </div>
+
+        <!-- Caen · Courtonne · Dimanche -->
+        <div class="bg-white border border-linen p-6 space-y-3">
+          <div class="flex items-start gap-4">
+            <span class="text-2xl mt-0.5">🥐</span>
+            <div class="space-y-1">
+              <div class="flex items-baseline gap-3 flex-wrap">
+                <h3 class="font-serif text-2xl font-normal text-ink">Caen · Place Courtonne</h3>
+                <span class="text-[14px] tracking-widest text-muted uppercase">
+                  <span class="t t-fr">20 min</span>
+                  <span class="t t-en">20 min</span>
+                </span>
+              </div>
+              <p class="text-[14px] tracking-wide text-muted uppercase">
+                <span class="t t-fr">Dimanche matin · 8h – 13h</span>
+                <span class="t t-en">Sunday morning · 8am – 1pm</span>
+              </p>
+              <p class="text-[15px] text-muted">Place Courtonne, 14000 Caen</p>
+            </div>
+          </div>
+          <p class="t t-fr text-[15px] text-[#4A4039] leading-loose">
+            Le marché du dimanche matin à Caen, parfait pour flâner avant le déjeuner. Producteurs, fromagers, poissonniers et stands gourmands.
+          </p>
+          <p class="t t-en text-[15px] text-[#4A4039] leading-loose">
+            Caen's Sunday morning market, perfect for a relaxed stroll before lunch. Local producers, cheesemakers, fishmongers and gourmet stalls.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="border-linen" />
+
+    <!-- ─── GROCERY ────────────────────────────────────────────── -->
+    <section id="grocery" class="space-y-7">
+      <h2 class="font-serif text-4xl font-normal text-ink tracking-wide">
+        <span class="t t-fr">Courses alimentaires</span>
+        <span class="t t-en">Grocery Shopping</span>
+      </h2>
+
+      <div class="grid gap-3">
+
+        <div class="bg-white border border-linen p-5 flex items-center gap-5">
+          <div class="shrink-0 w-11 h-11 border border-linen overflow-hidden flex items-center justify-center bg-white">
+            <img src="images/u-express.webp" alt="U Express" class="w-10 h-10 object-contain" />
+          </div>
+          <div class="space-y-1 min-w-0">
+            <div class="flex items-baseline gap-3 flex-wrap">
+              <h3 class="font-serif text-2xl font-normal text-ink">U Express</h3>
+              <span class="text-[14px] tracking-widest text-muted uppercase">€€</span>
+              <span class="text-[14px] tracking-widest text-muted uppercase">
+                <span class="t t-fr">5 min</span>
+                <span class="t t-en">5 min</span>
+              </span>
+            </div>
+            <p class="text-[15px] text-muted">Cd 23, D23 Zone Artisanale, 14680 Bretteville-sur-Laize</p>
+          </div>
+        </div>
+
+        <div class="bg-white border border-linen p-5 flex items-center gap-5">
+          <div class="shrink-0 w-11 h-11 border border-linen overflow-hidden flex items-center justify-center bg-white">
+            <img src="images/carrefour-express.png" alt="Carrefour Express" class="w-10 h-10 object-contain" />
+          </div>
+          <div class="space-y-1 min-w-0">
+            <div class="flex items-baseline gap-3 flex-wrap">
+              <h3 class="font-serif text-2xl font-normal text-ink">Carrefour Express</h3>
+              <span class="text-[14px] tracking-widest text-muted uppercase">€€€</span>
+              <span class="text-[14px] tracking-widest text-muted uppercase">
+                <span class="t t-fr">6 min</span>
+                <span class="t t-en">6 min</span>
+              </span>
+            </div>
+            <p class="text-[15px] text-muted">11 Rue du Dix Huit Juillet 44, 14190 Saint-Sylvain</p>
+          </div>
+        </div>
+
+        <div class="bg-white border border-linen p-5 flex items-center gap-5">
+          <div class="shrink-0 w-11 h-11 border border-linen overflow-hidden flex items-center justify-center bg-white">
+            <img src="images/leclerc.png" alt="E.Leclerc" class="w-10 h-10 object-contain" />
+          </div>
+          <div class="space-y-1 min-w-0">
+            <div class="flex items-baseline gap-3 flex-wrap">
+              <h3 class="font-serif text-2xl font-normal text-ink">E.Leclerc IFS</h3>
+              <span class="text-[14px] tracking-widest text-muted uppercase">€</span>
+              <span class="text-[14px] tracking-widest text-muted uppercase">
+                <span class="t t-fr">10 min</span>
+                <span class="t t-en">10 min</span>
+              </span>
+            </div>
+            <p class="text-[15px] text-muted">190 Rue de Rocquancourt, 14123 Ifs</p>
+            <p class="text-[14px] tracking-wide text-muted uppercase">
+              <span class="t t-fr">Recommandé pour les grandes courses</span>
+              <span class="t t-en">Recommended for major shopping</span>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="border-linen" />
+
+    <!-- ─── MEDICAL ────────────────────────────────────────────── -->
+    <section id="medical" class="space-y-7">
+      <h2 class="font-serif text-4xl font-normal text-ink tracking-wide">
+        <span class="t t-fr">Urgences médicales</span>
+        <span class="t t-en">Medical Emergencies</span>
+      </h2>
+
+      <div class="grid gap-3">
+
+        <div class="bg-white border border-linen p-6 flex items-start gap-4">
+          <span class="text-xl shrink-0 mt-0.5">💊</span>
+          <div class="space-y-1">
+            <div class="flex items-baseline gap-3 flex-wrap">
+              <h3 class="font-serif text-2xl font-normal text-ink">Pharmacie de Saint-Sylvain</h3>
+              <span class="text-[14px] tracking-widest text-muted uppercase">
+                <span class="t t-fr">6 min en voiture</span>
+                <span class="t t-en">6 min by car</span>
+              </span>
+            </div>
+            <p class="text-[15px] text-muted">7 Bis Rue Saint-Martin des Bois, 14190 Saint-Sylvain</p>
+          </div>
+        </div>
+
+        <div class="bg-white border border-linen p-6 flex items-start gap-4">
+          <span class="text-xl shrink-0 mt-0.5">🏥</span>
+          <div class="space-y-2 w-full">
+            <div class="flex items-baseline gap-3 flex-wrap">
+              <h3 class="font-serif text-2xl font-normal text-ink">Centre Médical Fleury-sur-Orne</h3>
+              <span class="text-[14px] tracking-widest text-muted uppercase">
+                <span class="t t-fr">~15 min en voiture</span>
+                <span class="t t-en">~15 min by car</span>
+              </span>
+            </div>
+            <p class="text-[15px] text-muted">
+              <span class="t t-fr">7j/7, sans rendez-vous · 9h–20h</span>
+              <span class="t t-en">7 days/week, no appointment · 9am–8pm</span>
+            </p>
+            <p class="text-[15px] text-muted">Place de la République, 14123 Fleury-sur-Orne</p>
+            <div class="flex flex-wrap gap-4 pt-1">
+              <a href="tel:0219004710" class="text-sm font-medium text-ink hover:text-muted transition-colors">
+                📞 02 19 00 47 10
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white border border-linen p-6 flex items-start gap-4">
+          <span class="text-xl shrink-0 mt-0.5">🩺</span>
+          <div class="space-y-2 w-full">
+            <div class="flex items-baseline gap-3 flex-wrap">
+              <h3 class="font-serif text-2xl font-normal text-ink">SOS Médecins Caen</h3>
+              <span class="text-[14px] tracking-widest text-muted uppercase">
+                <span class="t t-fr">15 min (ou à domicile)</span>
+                <span class="t t-en">15 min (or home visit)</span>
+              </span>
+            </div>
+            <p class="text-[15px] text-muted">
+              <span class="t t-fr">Centre Caen Guérinière</span>
+              <span class="t t-en">Caen Guérinière Center</span>
+            </p>
+            <div class="flex flex-wrap gap-4 pt-1">
+              <a href="tel:0233015851" class="text-sm font-medium text-ink hover:text-muted transition-colors">
+                📞 02 33 01 58 51
+              </a>
+              <a href="https://rdvasos.fr/" target="_blank" rel="noopener" class="text-sm font-medium text-ink hover:text-muted transition-colors">
+                🌐 rdvasos.fr <span class="text-sm text-muted">(dép. 14)</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-alert-bg border border-alert-border p-6 flex items-start gap-4">
+          <span class="text-xl shrink-0 mt-0.5">🚨</span>
+          <div class="space-y-2">
+            <h3 class="font-serif text-2xl font-normal text-alert-text">Urgences CHU Caen</h3>
+            <p class="t t-fr text-sm text-alert-text">Appelez le 15 <strong class="font-semibold">avant</strong> de vous rendre aux urgences.</p>
+            <p class="t t-en text-sm text-alert-text">Call 15 <strong class="font-semibold">before</strong> going to the emergency room.</p>
+            <p class="text-[15px] text-muted">
+              CHU de Caen · Av. de la Côte de Nacre, 14000 Caen
+              <span class="ml-1">(<span class="t t-fr">20 min en voiture</span><span class="t t-en">20 min by car</span>)</span>
+            </p>
+            <a href="tel:15" class="inline-block mt-1 text-sm font-semibold text-alert-text hover:opacity-70 transition-opacity">
+              📞 15
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="border-linen" />
+
+    <!-- ─── CHECKOUT ───────────────────────────────────────────── -->
+    <section id="checkout" class="space-y-7">
+      <h2 class="font-serif text-4xl font-normal text-ink tracking-wide">
+        <span class="t t-fr">Instructions de départ</span>
+        <span class="t t-en">Checkout Instructions</span>
+      </h2>
+
+      <p class="t t-fr text-[15px] text-[#4A4039] leading-loose">Merci pour votre séjour ! Nous espérons que vous avez passé un moment agréable dans notre gîte normand. Pour faciliter votre départ et l'accueil des prochains visiteurs, voici quelques consignes simples :</p>
+      <p class="t t-en text-[15px] text-[#4A4039] leading-loose">Thank you for your stay! We hope you had a wonderful time at our Norman cottage. To make your departure smooth and prepare for our next guests, please follow these simple guidelines:</p>
+
+      <div class="grid gap-3">
+
+        <div class="bg-white border border-linen p-6 space-y-3">
+          <h3 class="font-serif text-2xl font-normal text-ink">
+            <span class="t t-fr">Cuisine</span><span class="t t-en">Kitchen</span>
+          </h3>
+          <ul class="t t-fr text-[15px] text-[#4A4039] space-y-2 leading-relaxed">
+            <li class="flex gap-2"><span class="text-muted shrink-0">—</span>Lavez et rangez la vaisselle utilisée</li>
+            <li class="flex gap-2"><span class="text-muted shrink-0">—</span>Laissez la cuisine propre et en ordre</li>
+          </ul>
+          <ul class="t t-en text-[15px] text-[#4A4039] space-y-2 leading-relaxed">
+            <li class="flex gap-2"><span class="text-muted shrink-0">—</span>Wash and put away any dishes you used</li>
+            <li class="flex gap-2"><span class="text-muted shrink-0">—</span>Leave the kitchen clean and tidy</li>
+          </ul>
+        </div>
+
+        <div class="bg-white border border-linen p-6 space-y-3">
+          <h3 class="font-serif text-2xl font-normal text-ink">
+            <span class="t t-fr">Chambres</span><span class="t t-en">Bedrooms</span>
+          </h3>
+          <ul class="t t-fr text-[15px] text-[#4A4039] space-y-2 leading-relaxed">
+            <li class="flex gap-2"><span class="text-muted shrink-0">—</span>Laissez les draps utilisés en place sur les lits</li>
+            <li class="flex gap-2"><span class="text-muted shrink-0">—</span>Aérez les lits en relevant les couvertures</li>
+            <li class="flex gap-2"><span class="text-muted shrink-0">—</span>Notre équipe de ménage se chargera du linge</li>
+          </ul>
+          <ul class="t t-en text-[15px] text-[#4A4039] space-y-2 leading-relaxed">
+            <li class="flex gap-2"><span class="text-muted shrink-0">—</span>Leave the used sheets on the beds</li>
+            <li class="flex gap-2"><span class="text-muted shrink-0">—</span>Air out the beds by pulling back the covers</li>
+            <li class="flex gap-2"><span class="text-muted shrink-0">—</span>Our housekeeping team will take care of the linens</li>
+          </ul>
+        </div>
+
+        <div class="bg-white border border-linen p-6 space-y-3">
+          <h3 class="font-serif text-2xl font-normal text-ink">
+            <span class="t t-fr">Avant de partir</span><span class="t t-en">Before you leave</span>
+          </h3>
+          <ul class="t t-fr text-[15px] text-[#4A4039] space-y-2 leading-relaxed">
+            <li class="flex gap-2"><span class="text-muted shrink-0">—</span>Vérifiez tous les tiroirs et rangements</li>
+            <li class="flex gap-2"><span class="text-muted shrink-0">—</span>N'oubliez rien de personnel</li>
+          </ul>
+          <ul class="t t-en text-[15px] text-[#4A4039] space-y-2 leading-relaxed">
+            <li class="flex gap-2"><span class="text-muted shrink-0">—</span>Check all drawers and storage areas</li>
+            <li class="flex gap-2"><span class="text-muted shrink-0">—</span>Make sure you haven't left any personal belongings</li>
+          </ul>
+        </div>
+
+        <div class="bg-white border border-linen p-6 space-y-3">
+          <h3 class="font-serif text-2xl font-normal text-ink">
+            <span class="t t-fr">En cas de problème</span><span class="t t-en">In case of issues</span>
+          </h3>
+          <p class="t t-fr text-[15px] text-[#4A4039] leading-loose">Si vous avez cassé ou endommagé quelque chose, merci d'en parler à Noémie. Pas de souci, cela peut arriver à tout le monde ! Une solution à l'amiable est toujours possible, et c'est bien plus simple pour tout le monde que de passer par un contentieux Airbnb.</p>
+          <p class="t t-en text-[15px] text-[#4A4039] leading-loose">If you broke or damaged something, please let Noémie know. Don't worry, these things happen! We can always sort it out between us, which is much simpler for everyone than going through an Airbnb dispute.</p>
+        </div>
+
+        <div class="bg-linen-light border border-linen p-6 space-y-3">
+          <h3 class="font-serif text-2xl font-normal text-ink">
+            <span class="t t-fr">Votre avis compte</span><span class="t t-en">Your review matters</span>
+          </h3>
+          <p class="t t-fr text-[15px] text-[#4A4039] leading-loose">Pensez à nous laisser un avis sur la plateforme. Vos commentaires nous aident énormément à améliorer l'expérience.</p>
+          <p class="t t-en text-[15px] text-[#4A4039] leading-loose">Please remember to leave us a review on the platform. Your feedback helps us tremendously to improve the experience.</p>
+        </div>
+
+      </div>
+
+      <p class="text-center font-serif italic text-2xl text-muted pt-4">
+        <span class="t t-fr">Bon voyage et merci encore.</span>
+        <span class="t t-en">Safe travels, and thank you.</span>
+      </p>
+    </section>
+
+  </main>
+
+  <!-- ─── FOOTER ─────────────────────────────────────────────── -->
+  <footer class="mt-16 border-t border-linen bg-white">
+    <div class="max-w-3xl mx-auto px-5 py-8 text-center space-y-2">
+      <p class="font-serif text-base text-ink">Gîte Daumesnil</p>
+      <p class="text-sm text-muted tracking-wide">Cintheaux, Normandie</p>
+      <p class="text-sm text-muted pt-1">
+        <a href="tel:+33669939633" class="hover:text-ink transition-colors">+33 6 69 93 96 33</a>
+        <span class="mx-2">·</span>
+        Noémie & Teddy
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.querySelector('header');
+    const nav = document.getElementById('main-nav');
+    const sections = document.querySelectorAll('main section[id]');
+
+    function setOffsets() {
+      const offset = header.offsetHeight + nav.offsetHeight;
+      nav.style.top = header.offsetHeight + 'px';
+      sections.forEach(s => { s.style.scrollMarginTop = offset + 'px'; });
+    }
+    setOffsets();
+    window.addEventListener('resize', setOffsets);
+
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const chevron = document.getElementById('menu-chevron');
+      const isOpen = !menu.classList.contains('hidden');
+      menu.classList.toggle('hidden', isOpen);
+      chevron.style.transform = isOpen ? '' : 'rotate(180deg)';
+    }
+
+    function closeMenu() {
+      document.getElementById('mobile-menu').classList.add('hidden');
+      document.getElementById('menu-chevron').style.transform = '';
+    }
+
+    function toggleLang() {
+      const body = document.body;
+      const isFr = body.classList.contains('lang-fr');
+      body.classList.toggle('lang-fr', !isFr);
+      body.classList.toggle('lang-en', isFr);
+      document.documentElement.lang = isFr ? 'en' : 'fr';
+    }
+  </script>
+
+</body>
+</html>
