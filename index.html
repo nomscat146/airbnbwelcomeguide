@@ -45,6 +45,8 @@
 </head>
 
 <body class="lang-fr bg-parch text-ink font-sans antialiased">
+  <!-- guide v2 · section Télé + icônes réelles + hero compressée -->
+
 
   <!-- ─── HEADER ─────────────────────────────────────────────── -->
   <header class="sticky top-0 z-50 bg-parch/95 backdrop-blur border-b border-linen">
@@ -73,6 +75,9 @@
     <!-- Desktop -->
     <div class="hidden sm:block max-w-3xl mx-auto px-5">
       <ul class="flex gap-7 text-sm tracking-widest uppercase whitespace-nowrap py-3">
+        <li><a href="#tv" class="text-muted hover:text-ink py-1 border-b border-transparent hover:border-ink transition-colors">
+          <span class="t t-fr">Télé</span><span class="t t-en">TV</span>
+        </a></li>
         <li><a href="#local" class="text-muted hover:text-ink py-1 border-b border-transparent hover:border-ink transition-colors">
           <span class="t t-fr">Produits locaux</span><span class="t t-en">Local products</span>
         </a></li>
@@ -114,6 +119,9 @@
 
       <div id="mobile-menu" class="hidden border-t border-linen">
         <ul>
+          <li><a href="#tv" onclick="closeMenu()" class="flex items-center gap-3 px-5 py-3.5 text-sm text-muted hover:bg-linen-light hover:text-ink transition-colors">
+            <span class="t t-fr">Utiliser la télé</span><span class="t t-en">Using the TV</span>
+          </a></li>
           <li><a href="#local" onclick="closeMenu()" class="flex items-center gap-3 px-5 py-3.5 text-sm text-muted hover:bg-linen-light hover:text-ink transition-colors">
             <span class="t t-fr">Produits locaux</span><span class="t t-en">Local products</span>
           </a></li>
@@ -176,6 +184,118 @@
           <p class="font-medium text-ink text-sm tracking-wide">+33 6 69 93 96 33</p>
         </div>
       </a>
+    </section>
+
+    <hr class="border-linen" />
+
+    <!-- ─── TV ─────────────────────────────────────────────────── -->
+    <section id="tv" class="space-y-7">
+      <h2 class="font-serif text-4xl font-normal text-ink tracking-wide">
+        <span class="t t-fr">Utiliser la télé</span>
+        <span class="t t-en">Using the TV</span>
+      </h2>
+
+      <div class="grid gap-3">
+
+        <!-- Note · Fire TV Stick / box 5G -->
+        <div class="bg-alert-bg border border-alert-border p-6 flex items-start gap-4">
+          <span class="text-xl shrink-0 mt-0.5">📡</span>
+          <div class="space-y-1">
+            <p class="t t-fr text-[15px] text-[#4A4039] leading-loose">
+              La télé passe par un boîtier <strong class="font-medium text-ink">Fire TV Stick</strong>. Merci de <strong class="font-medium text-ink">ne pas toucher aux branchements</strong> derrière la télé ni à la <strong class="font-medium text-ink">box 5G</strong>. En pleine campagne le signal peut être un peu faible, mais rien n'y changera — tout a déjà été optimisé.
+            </p>
+            <p class="t t-en text-[15px] text-[#4A4039] leading-loose">
+              The TV runs through a <strong class="font-medium text-ink">Fire TV Stick</strong>. Please <strong class="font-medium text-ink">don't touch the cables</strong> behind the TV or the <strong class="font-medium text-ink">5G box</strong>. Out in the countryside the signal can be a little weak, but nothing will change it — everything has already been optimised.
+            </p>
+          </div>
+        </div>
+
+        <!-- Turn on · remote schematic beside text -->
+        <div class="bg-white border border-linen p-6 flex items-center gap-6">
+          <svg viewBox="0 0 130 320" class="w-16 shrink-0 h-auto" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Télécommande Fire TV Stick">
+            <rect x="14" y="8" width="102" height="304" rx="28" fill="#2C3E4C" />
+            <!-- ❶ Power (top-left, highlighted) -->
+            <circle cx="45" cy="42" r="18" fill="none" stroke="#B4553F" stroke-width="2.5" stroke-dasharray="4 3" />
+            <circle cx="45" cy="42" r="13" fill="#F5F1EB" />
+            <path d="M45 35 L45 43" fill="none" stroke="#B4553F" stroke-width="2.2" stroke-linecap="round" />
+            <path d="M39 38 A 8 8 0 1 0 51 38" fill="none" stroke="#B4553F" stroke-width="2.2" stroke-linecap="round" />
+            <!-- mic pinhole (top-right) -->
+            <circle cx="85" cy="40" r="2" fill="#9fb0bd" />
+            <!-- Alexa voice button -->
+            <circle cx="65" cy="80" r="10" fill="#3d4f5e" />
+            <rect x="62" y="74" width="6" height="8" rx="3" fill="#9fb0bd" />
+            <path d="M59 79 a6 6 0 0 0 12 0" fill="none" stroke="#9fb0bd" stroke-width="1.2" />
+            <!-- nav ring -->
+            <circle cx="65" cy="150" r="36" fill="#3d4f5e" />
+            <circle cx="65" cy="150" r="16" fill="#4a5c6b" />
+            <path d="M65 123 l-5 7 h10 z" fill="#c3d0da" />
+            <path d="M65 177 l-5 -7 h10 z" fill="#c3d0da" />
+            <path d="M38 150 l7 -5 v10 z" fill="#c3d0da" />
+            <path d="M92 150 l-7 -5 v10 z" fill="#c3d0da" />
+            <!-- back · home · menu -->
+            <circle cx="40" cy="212" r="9" fill="#3d4f5e" />
+            <circle cx="65" cy="212" r="9" fill="#3d4f5e" />
+            <circle cx="90" cy="212" r="9" fill="#3d4f5e" />
+            <!-- playback -->
+            <circle cx="40" cy="250" r="9" fill="#3d4f5e" />
+            <circle cx="65" cy="250" r="9" fill="#3d4f5e" />
+            <circle cx="90" cy="250" r="9" fill="#3d4f5e" />
+            <!-- volume − / + / mute -->
+            <circle cx="40" cy="288" r="9" fill="#3d4f5e" />
+            <path d="M35 288 h10" stroke="#9fb0bd" stroke-width="1.6" stroke-linecap="round" />
+            <circle cx="65" cy="288" r="9" fill="#3d4f5e" />
+            <path d="M65 283 v10 M60 288 h10" stroke="#9fb0bd" stroke-width="1.6" stroke-linecap="round" />
+            <circle cx="90" cy="288" r="9" fill="#3d4f5e" />
+            <path d="M86 285 l5 -2 v10 l-5 -2 z" fill="#9fb0bd" /><path d="M93 285 l3 6" stroke="#9fb0bd" stroke-width="1" stroke-linecap="round" />
+          </svg>
+          <div class="space-y-1">
+            <h3 class="font-serif text-2xl font-normal text-ink">
+              <span class="t t-fr">Allumer la télé</span>
+              <span class="t t-en">Turning on the TV</span>
+            </h3>
+            <p class="t t-fr text-[15px] text-[#4A4039] leading-loose">
+              Appuyez sur le bouton <strong class="font-medium text-ink">ON</strong> ❶ en haut de la télécommande, puis patientez quelques secondes. L'allumage peut être un peu lent, c'est normal.
+            </p>
+            <p class="t t-en text-[15px] text-[#4A4039] leading-loose">
+              Press the <strong class="font-medium text-ink">ON</strong> button ❶ at the top of the remote, then wait a few seconds. It can be a little slow to start — that's normal.
+            </p>
+          </div>
+        </div>
+
+        <!-- Apps -->
+        <div class="bg-white border border-linen p-6 space-y-4">
+          <h3 class="font-serif text-2xl font-normal text-ink">
+            <span class="t t-fr">Les applications</span>
+            <span class="t t-en">The apps</span>
+          </h3>
+          <div class="flex flex-wrap gap-x-10 gap-y-5">
+            <div class="space-y-2">
+              <p class="text-[14px] tracking-widest text-muted uppercase">
+                <span class="t t-fr">TF1 & M6</span>
+                <span class="t t-en">TF1 & M6</span>
+              </p>
+              <div class="flex gap-3">
+                <img src="images/tf1.jpg" alt="TF1+" class="w-14 h-14 rounded-2xl border border-linen object-cover" />
+                <img src="images/m6.jpg" alt="M6+" class="w-14 h-14 rounded-2xl border border-linen object-cover" />
+              </div>
+            </div>
+            <div class="space-y-2">
+              <p class="text-[14px] tracking-widest text-muted uppercase">
+                <span class="t t-fr">Autres chaînes · TNT</span>
+                <span class="t t-en">Other channels · TNT</span>
+              </p>
+              <img src="images/molotov.jpg" alt="Molotov" class="w-14 h-14 rounded-2xl border border-linen object-cover" />
+            </div>
+          </div>
+          <p class="t t-fr text-[15px] text-[#4A4039] leading-loose">
+            <strong class="font-medium text-ink">TF1</strong> et <strong class="font-medium text-ink">M6</strong> : passez par leurs applications dédiées. Pour <strong class="font-medium text-ink">toutes les autres chaînes</strong> publiques ou de la TNT, utilisez l'application <strong class="font-medium text-ink">Molotov</strong>.
+          </p>
+          <p class="t t-en text-[15px] text-[#4A4039] leading-loose">
+            <strong class="font-medium text-ink">TF1</strong> and <strong class="font-medium text-ink">M6</strong>: use their dedicated apps. For <strong class="font-medium text-ink">all other</strong> public or TNT channels, use the <strong class="font-medium text-ink">Molotov</strong> app.
+          </p>
+        </div>
+
+      </div>
     </section>
 
     <hr class="border-linen" />
